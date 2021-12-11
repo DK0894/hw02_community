@@ -16,7 +16,8 @@
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
         </li>
       </ul>
-      <p>{{ post.text }}</p>
+      <!-- linebreaksbr разбивает содержимое text на абзацы -->
+      <p>{{ post.text|linebreaksbr }}</p>
       {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
   </article>
