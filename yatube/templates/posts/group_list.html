@@ -17,7 +17,7 @@
         </li>
       </ul>
       <!-- linebreaksbr разбивает содержимое text на абзацы -->
-      <p>{{ post.text|linebreaksbr }}</p>
+      {% include 'includes/post_text.html' %}
       {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
   </article>

@@ -1,5 +1,7 @@
 import os
 
+SHOW_POSTS = 10   # Количество отображаемых постов на странице
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'bckxf+=g%)jf&d^2&c8xduda++$wm%@!i4lc77^===+df&y+e9'

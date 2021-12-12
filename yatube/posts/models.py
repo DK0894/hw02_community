@@ -20,8 +20,8 @@ class Post(models.Model):
         Group,
         blank=True,
         null=True,
-        on_delete=models.SET_NULL,   # Не удаляет посты при удалении группы
-        related_name='groups'
+        on_delete=models.SET_NULL,
+        related_name='posts'
     )
     author = models.ForeignKey(
         User,
