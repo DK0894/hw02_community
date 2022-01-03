@@ -12,8 +12,8 @@
           Войти на сайт
         </div>
         <div class="card-body">
-          <form method="post" action="../users/login.html">
-            <input type="hidden" name="csrfmiddlewaretoken" value="">
+          <form method="post" action="{% url 'users:login' %}">
+            {% csrf_token %}
             <div class="form-group row my-3">
               <label for="id_username">
                 Имя пользователя
@@ -33,6 +33,7 @@
                   Войти
                 </button>
                   <a href="{% url 'users:password_reset_form' %}" class="btn btn-link">
+                    {% csrf_token %}
                     Забыли пароль?
                   </a>
               </div>
