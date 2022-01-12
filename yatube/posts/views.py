@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 
@@ -6,9 +7,12 @@ from .models import Group, Post
 
 def index(request):
     template = 'posts/index.html'
-    posts = Post.objects.all()[:settings.SHOW_POSTS]
+    post_list = Post.objects.all()
+    peginator = Paginator(post_list, settings.SHOW_POSTS)
+    page_number = request.GET.get('page')
+    page_obj = peginator.get_page(page_number)
     context = {
-        'posts': posts,
+        'page_obj': page_obj,
     }
     return render(request, template, context)
 
@@ -16,9 +20,12 @@ def index(request):
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     template = 'posts/group_list.html'
-    posts = group.posts.all()[:settings.SHOW_POSTS]
+    post_list = group.posts.all()
+    peginator = Paginator(post_list, settings.SHOW_POSTS)
+    page_number = request.GET.get('page')
+    page_obj = peginator.get_page(page_number)
     context = {
         'group': group,
-        'posts': posts,
+        'page_obj': page_obj,
     }
     return render(request, template, context)
