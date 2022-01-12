@@ -46,6 +46,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Добавлен конеткст-процессор
+                'core.context_processors.year.year',
             ],
         },
     },
@@ -88,7 +90,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'posts:main_page'
-#LOGOUT_REDIRECT_URL = 'users:logout'
+# LOGOUT_REDIRECT_URL = 'users:logout'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
