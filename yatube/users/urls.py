@@ -1,7 +1,7 @@
 import django.contrib.auth.views as dc
 from django.urls import path, reverse_lazy
-from . import views
 
+from . import views
 
 app_name = 'users'
 
