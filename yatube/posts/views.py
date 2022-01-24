@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import PostForm
 
 from .models import Group, Post, User
 
@@ -53,3 +54,17 @@ def post_detail(request, post_id):
         'post': post,
     }
     return render(request, 'posts/post_detail.html', context)
+
+
+def post_create(request):
+    template = 'posts/post_create.html'
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['text']
+            group = form.cleaned_data['group']
+            form.save()
+            return redirect('posts/profile.html')
+        return render(request, template, {'form': form})
+    form = PostForm()
+    return render(request, template, {'form': form})
